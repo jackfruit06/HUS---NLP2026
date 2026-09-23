@@ -1,0 +1,16 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+env/
+venv/
+
+# Dataset lớn (~69MB) — không đưa lên GitHub
+dataset/
+
+# OS
+.DS_Store
+Thumbs.db

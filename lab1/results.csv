@@ -1,0 +1,10 @@
+query,num_relevant_docs,P@5,R@5,Reciprocal Rank
+real estate,372,1.0,0.013440860215053764,1.0
+insurance policy,59,0.8,0.06779661016949153,1.0
+swimming pool,105,1.0,0.047619047619047616,1.0
+online shopping,43,0.2,0.023255813953488372,0.2
+coffee shop,47,0.2,0.02127659574468085,0.5
+solar panels,40,1.0,0.125,1.0
+tax return,39,0.8,0.10256410256410256,1.0
+job interview,20,0.0,0.0,0.0
+MEAN (macro-average),-,0.625,0.05011912878323309,0.7125
