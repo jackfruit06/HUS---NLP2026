@@ -10,6 +10,13 @@ Tổng hợp các bài thực hành môn **Xử lý Ngôn ngữ Tự nhiên** (N
 ---
 # LAB 01 — From Text Processing to Search
 
+## Xem notebook
+
+Nếu GitHub không hiển thị được `experiments.ipynb`, xem notebook (kèm output) tại:
+
+- [Xem trên nbviewer](https://nbviewer.org/github/jackfruit06/HUS---NLP2026/blob/main/lab1/experiments.ipynb)
+- [Mở trên Google Colab](https://colab.research.google.com/github/jackfruit06/HUS---NLP2026/blob/main/lab1/experiments.ipynb)
+
 ## Cấu trúc thư mục
 
 ```
