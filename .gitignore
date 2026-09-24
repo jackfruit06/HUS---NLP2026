@@ -2,5 +2,5 @@
 # Thêm lab mới: thêm dòng  !/lab2/  (tương tự)
 /*
 !/.gitignore
-!/README.md
+!/README.md 
 !/lab1/
