@@ -25,3 +25,4 @@ Sẽ kết hợp thêm một lớp semantic matching bên cạnh TF-IDF (hybrid 
 AI đã được sử dụng ở những phần:
 D: hỗ trợ format in ra dạng bảng của các kết quả
 F/G/H: tối ưu code sử dụng trong các pần không bị lặp lại. ví dụ như tổ chức hàm pipeline() có lồng bên trong hàm search, oov, hàm evaluate để dùng được cho cả phần F và H khi có 2 relevances của 2 listr query khác nhau
+                
