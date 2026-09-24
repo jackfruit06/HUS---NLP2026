@@ -1,7 +1,6 @@
 # Natural Language Processing Laboratory Assignments
 > **Sinh viên:** Nguyễn Thị Thanh Mai - 23000139  
 > **Khóa học:** HUS NLP 2026
-> 
 > **Kho lưu trữ:** [HUS--NLP2026](https://github.com/jackfruit06/HUS---NLP2026)
 >
 ---
