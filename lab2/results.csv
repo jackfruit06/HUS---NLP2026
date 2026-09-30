@@ -1,0 +1,29 @@
+﻿Section,Model,Smoothing,Split,Perplexity,Context,Prediction,Actual next word
+perplexity,Unigram,mle,Train,1537.25,,,
+perplexity,Unigram,laplace,Train,1538.73,,,
+perplexity,Bigram,mle,Train,165.44,,,
+perplexity,Bigram,laplace,Train,3326.26,,,
+perplexity,Trigram,mle,Train,14.8,,,
+perplexity,Trigram,laplace,Train,17423.52,,,
+perplexity,Unigram,mle,Validation,1357.24,,,
+perplexity,Unigram,laplace,Validation,1361.23,,,
+perplexity,Bigram,mle,Validation,inf,,,
+perplexity,Bigram,laplace,Validation,3793.54,,,
+perplexity,Trigram,mle,Validation,inf,,,
+perplexity,Trigram,laplace,Validation,27316.67,,,
+perplexity,Unigram,mle,Test,1340.57,,,
+perplexity,Unigram,laplace,Test,1344.52,,,
+perplexity,Bigram,mle,Test,inf,,,
+perplexity,Bigram,laplace,Test,3742.28,,,
+perplexity,Trigram,mle,Test,inf,,,
+perplexity,Trigram,laplace,Test,27143.74,,,
+next-word prediction,Trigram,mle,,,scheduled posts,content 1.000,will
+next-word prediction,Trigram,mle,,,sometime in,"the 0.407, may 0.074, 2016 0.074",the
+next-word prediction,Trigram,mle,,,just not,"the 0.097, a 0.065, going 0.054",common
+next-word prediction,Trigram,mle,,,n posible,"<UNK> 0.088, </s> 0.066, a 0.055",sobre
+next-word prediction,Trigram,mle,,,over different,"active 0.200, muscle 0.200, time 0.200",types
+next-word prediction,Trigram,mle,,,do you,"have 0.129, think 0.118, want 0.079",have
+next-word prediction,Trigram,mle,,,we were,"able 0.067, in 0.041, going 0.039",enthralled
+next-word prediction,Trigram,mle,,,liquid biopsies,Unseen context,examinations
+next-word prediction,Trigram,mle,,,the tiles,"of 0.400, insure 0.200, </s> 0.200",may
+next-word prediction,Trigram,mle,,,at bella,"collina 0.667, vista 0.333",natural
