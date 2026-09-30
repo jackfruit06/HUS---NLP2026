@@ -11,3 +11,4 @@ Tổng hợp các bài thực hành môn **Xử lý Ngôn ngữ Tự nhiên** (N
 | Lab | Nội dung |
 |-----|----------|
 | [lab1](lab1/) | From Text Processing to Search|
+| [lab2](lab2/) | Language Models|
