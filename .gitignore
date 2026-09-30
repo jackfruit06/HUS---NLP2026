@@ -4,3 +4,5 @@
 !/.gitignore
 !/README.md 
 !/lab1/
+!/lab2/
+__pycache__/
