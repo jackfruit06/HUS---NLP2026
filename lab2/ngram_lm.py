@@ -67,18 +67,6 @@ class NGramLanguageModel:
         self.next_word = defaultdict(Counter)   # {(h...): Counter{w: c(h, w)}} -> dung cho next_word_distribution
 
     def fit(self, corpus):
-        """corpus: list cac cau (list token). Tra ve self.
-
-        TODO:
-            1. self.vocab = build_vocabulary(corpus, self.min_freq)
-            2. corpus = replace_oov(corpus, self.vocab)
-            3. self.ngram_counts = count_ngrams(corpus, self.n)
-            4. Tu ngram_counts suy ra context_counts va followers:
-                   for ng, c in self.ngram_counts.items():
-                       h, w = ng[:-1], ng[-1]
-                       ...
-               (Lam the nay dung cho ca n=1, vi ng[:-1] = () ).
-        """
         self.vocab = build_vocabulary(corpus,self.min_freq)
         corpus = replace_oov(corpus,self.vocab)
         self.ngram_counts = count_ngrams(corpus, self.n)
@@ -93,13 +81,6 @@ class NGramLanguageModel:
         return self
 
     def _context_input(self, context):
-        """Chuyen context (list token, do dai bat ky) thanh tuple (n-1) token cuoi.
-
-        - Token la BOS giu nguyen; token khong trong vocab -> UNK.
-        - Neu context ngan hon n-1 token -> pad them BOS ben trai.
-        - n = 1 -> luon tra ve ().
-        Vi du trigram: ["x", "the", "cat"] -> ("the", "cat");  ["cat"] -> ("<s>", "cat")
-        """
         if self.n == 1:
             return ()
         context = [t if (t == BOS or t in self.vocab) else UNK for t in context]
