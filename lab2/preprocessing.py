@@ -6,7 +6,7 @@ import json
 import random
 import re
 
-DATA_PATH = "../lab1/dataset/30k_documents.json"
+DATA_PATH = "../dataset/30k_documents.json"
 
 
 def load_documents(path=DATA_PATH):

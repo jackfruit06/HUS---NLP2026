@@ -6,7 +6,7 @@ from scipy.sparse import coo_matrix
 import numpy as np
 
 
-DATA_PATH = Path(__file__).parent.parent / "lab1" / "dataset" / "30k_documents.json"
+DATA_PATH = "../dataset/30k_documents.json"
 
 
 def tokenize(text):

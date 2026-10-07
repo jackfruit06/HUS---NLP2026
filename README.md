@@ -14,15 +14,16 @@ và đều dùng chung một corpus 30,000 documents.
 
 | Lab | Nội dung | Kỹ thuật chính | Notebook |
 |-----|----------|----------------|----------|
-| [lab1](lab1/) | From Text Processing to Search | Tokenization, TF-IDF, cosine similarity, document retrieval | [experiments.ipynb](https://nbviewer.org/github/jackfruit06/HUS---NLP2026/blob/master/lab1/experiments.ipynb) |
-| [lab2](lab2/) | Language Models | N-gram LM (unigram/bigram/trigram), MLE, Laplace smoothing, perplexity, next-word prediction | [experiments.ipynb](https://nbviewer.org/github/jackfruit06/HUS---NLP2026/blob/master/lab2/experiments.ipynb) |
-| [lab3](lab3/) | Word Representations and Embeddings | Co-occurrence matrix, Word2Vec (Skip-gram), word similarity, word analogy, semantic search | [word_embedding.ipynb](https://nbviewer.org/github/jackfruit06/HUS---NLP2026/blob/master/lab3/word_embedding.ipynb) |
+| [lab1](lab1/) | From Text Processing to Search | Tokenization, TF-IDF, cosine similarity, document retrieval | [experiments.ipynb](https://colab.research.google.com/github/jackfruit06/HUS---NLP2026/blob/master/lab1/experiments.ipynb) |
+| [lab2](lab2/) | Language Models | N-gram LM (unigram/bigram/trigram), MLE, Laplace smoothing, perplexity, next-word prediction | [experiments.ipynb](https://colab.research.google.com/github/jackfruit06/HUS---NLP2026/blob/master/lab2/experiments.ipynb) |
+| [lab3](lab3/) | Word Representations and Embeddings | Co-occurrence matrix, Word2Vec (Skip-gram), word similarity, word analogy, semantic search | [word_embedding.ipynb](https://colab.research.google.com/github/jackfruit06/HUS---NLP2026/blob/master/lab3/word_embedding.ipynb) |
 
 ## Cấu trúc kho lưu trữ
 
 ```
 HUS---NLP2026/
 ├── README.md        <- file này
+├── dataset          <- data
 ├── lab1/            <- LAB 01 — From Text Processing to Search
 ├── lab2/            <- LAB 02 — Language Models
 └── lab3/            <- LAB 03 — Word Representations and Embeddings
@@ -39,8 +40,8 @@ Mỗi lab có `README.md` riêng mô tả cấu trúc thư mục, dữ liệu v�
 
 ## Dữ liệu
 
-- `lab1/dataset/30k_documents.json` — corpus 30,000 documents (JSON Lines: `text`, `timestamp`, `url`), dùng chung cho cả 3 lab.
-- `lab3/IMDB Dataset.csv` — 50,000 review phim có nhãn sentiment, dùng cho downstream task của LAB 03.
+- `/dataset/30k_documents.json` — corpus 30,000 documents (JSON Lines: `text`, `timestamp`, `url`), dùng chung cho cả 3 lab.
+- `/dataset/IMDB Dataset.csv` — 50,000 review phim có nhãn sentiment, dùng cho downstream task của LAB 03.
 
 ## Môi trường
 
