@@ -1,0 +1,148 @@
+experiment,setting,metric,value
+exp1,IMDb,Samples (raw),50000.0
+exp1,IMDb,Classes,2.0
+exp1,IMDb,Positive (%),50.0
+exp1,IMDb,Negative (%),50.0
+exp1,IMDb,Duplicates,418.0
+exp1,IMDb,Missing text,0.0
+exp1,IMDb,Missing label,0.0
+exp1,IMDb,Words median,173.0
+exp1,IMDb,Words mean,231.0
+exp1,IMDb,Samples (sau khi bo duplicate),49578.0
+exp2,TF-IDF + LR,Training time (s),4.4838
+exp2,TF-IDF + LR,Vocabulary size,55095.6667
+exp2,TF-IDF + LR,Accuracy,0.9039
+exp2,TF-IDF + LR,Precision,0.8977
+exp2,TF-IDF + LR,Recall,0.9125
+exp2,TF-IDF + LR,F1,0.905
+exp3,TF-IDF + LR,Training time (s),4.4838
+exp3,TF-IDF + LR,Vocabulary size,55095.6667
+exp3,TF-IDF + LR,Accuracy,0.9039
+exp3,TF-IDF + LR,Precision,0.8977
+exp3,TF-IDF + LR,Recall,0.9125
+exp3,TF-IDF + LR,F1,0.905
+exp3,Avg Word2Vec + LR,Training time (s),167.6685
+exp3,Avg Word2Vec + LR,Vocabulary size,35321.3333
+exp3,Avg Word2Vec + LR,Accuracy,0.8663
+exp3,Avg Word2Vec + LR,Precision,0.8644
+exp3,Avg Word2Vec + LR,Recall,0.8701
+exp3,Avg Word2Vec + LR,F1,0.8672
+exp3,TF-IDF + Linear SVM,Training time (s),4.2784
+exp3,TF-IDF + Linear SVM,Vocabulary size,55095.6667
+exp3,TF-IDF + Linear SVM,Accuracy,0.9016
+exp3,TF-IDF + Linear SVM,Precision,0.8946
+exp3,TF-IDF + Linear SVM,Recall,0.9113
+exp3,TF-IDF + Linear SVM,F1,0.9029
+exp4,TF-IDF + LR,F1 (goc),0.9061
+exp4,TF-IDF + LR,F1 (xao tron),0.9061
+exp4,TF-IDF + LR,So prediction doi,0.0
+exp4,Avg Word2Vec + LR,F1 (goc),0.8698
+exp4,Avg Word2Vec + LR,F1 (xao tron),0.8698
+exp4,Avg Word2Vec + LR,So prediction doi,0.0
+exp5,Unigram,Training time (s),4.4838
+exp5,Unigram,Vocabulary size,55095.6667
+exp5,Unigram,Accuracy,0.9039
+exp5,Unigram,Precision,0.8977
+exp5,Unigram,Recall,0.9125
+exp5,Unigram,F1,0.905
+exp5,Unigram,Vocabulary (min_df=1),95774.0
+exp5,Unigram + Bigram,Training time (s),24.5564
+exp5,Unigram + Bigram,Vocabulary size,552198.3333
+exp5,Unigram + Bigram,Accuracy,0.9172
+exp5,Unigram + Bigram,Precision,0.9118
+exp5,Unigram + Bigram,Recall,0.9244
+exp5,Unigram + Bigram,F1,0.9181
+exp5,Unigram + Bigram,Vocabulary (min_df=1),1905502.0
+confusion,TF-IDF + LR,TP,3425.0
+confusion,TF-IDF + LR,FN,307.0
+confusion,TF-IDF + LR,FP,403.0
+confusion,TF-IDF + LR,TN,3302.0
+confusion,TF-IDF + LR,FN rate (pos bi nham thanh neg),0.0823
+confusion,TF-IDF + LR,FP rate (neg bi nham thanh pos),0.1088
+confusion,TF-IDF + LR,So loi,710.0
+confusion,Avg Word2Vec + LR,TP,3269.0
+confusion,Avg Word2Vec + LR,FN,463.0
+confusion,Avg Word2Vec + LR,FP,516.0
+confusion,Avg Word2Vec + LR,TN,3189.0
+confusion,Avg Word2Vec + LR,FN rate (pos bi nham thanh neg),0.1241
+confusion,Avg Word2Vec + LR,FP rate (neg bi nham thanh pos),0.1393
+confusion,Avg Word2Vec + LR,So loi,979.0
+confusion,TF-IDF + Linear SVM,TP,3410.0
+confusion,TF-IDF + Linear SVM,FN,322.0
+confusion,TF-IDF + Linear SVM,FP,402.0
+confusion,TF-IDF + Linear SVM,TN,3303.0
+confusion,TF-IDF + Linear SVM,FN rate (pos bi nham thanh neg),0.0863
+confusion,TF-IDF + Linear SVM,FP rate (neg bi nham thanh pos),0.1085
+confusion,TF-IDF + Linear SVM,So loi,724.0
+error_rate,TF-IDF + LR,loi <=100 tu,0.0939
+error_rate,TF-IDF + LR,loi 101-200 tu,0.1011
+error_rate,TF-IDF + LR,loi 201-300 tu,0.0939
+error_rate,TF-IDF + LR,loi >300 tu,0.0862
+error_rate,TF-IDF + LR,loi co tu phu dinh,0.0959
+error_rate,TF-IDF + LR,loi khong co tu phu dinh,0.0924
+error_rate,Avg Word2Vec + LR,loi <=100 tu,0.1336
+error_rate,Avg Word2Vec + LR,loi 101-200 tu,0.1282
+error_rate,Avg Word2Vec + LR,loi 201-300 tu,0.1401
+error_rate,Avg Word2Vec + LR,loi >300 tu,0.1305
+error_rate,Avg Word2Vec + LR,loi co tu phu dinh,0.1339
+error_rate,Avg Word2Vec + LR,loi khong co tu phu dinh,0.114
+error_rate,TF-IDF + Linear SVM,loi <=100 tu,0.1023
+error_rate,TF-IDF + Linear SVM,loi 101-200 tu,0.1048
+error_rate,TF-IDF + Linear SVM,loi 201-300 tu,0.0903
+error_rate,TF-IDF + Linear SVM,loi >300 tu,0.085
+error_rate,TF-IDF + Linear SVM,loi co tu phu dinh,0.0975
+error_rate,TF-IDF + Linear SVM,loi khong co tu phu dinh,0.096
+weights,Top positive,7,12.8011
+weights,Top positive,excellent,12.2408
+weights,Top positive,great,11.9052
+weights,Top positive,perfect,10.0974
+weights,Top positive,amazing,9.309
+weights,Top positive,wonderful,8.8784
+weights,Top positive,best,8.8741
+weights,Top positive,8,8.5433
+weights,Top positive,favorite,8.196
+weights,Top positive,hilarious,8.1411
+weights,Top positive,highly,7.9834
+weights,Top positive,enjoyable,7.8841
+weights,Top positive,wonderfully,7.6774
+weights,Top positive,superb,7.6253
+weights,Top positive,subtle,7.5895
+weights,Top negative,worst,-18.7126
+weights,Top negative,awful,-13.7471
+weights,Top negative,waste,-13.7098
+weights,Top negative,boring,-12.793
+weights,Top negative,disappointment,-10.9654
+weights,Top negative,bad,-10.8838
+weights,Top negative,poor,-10.7469
+weights,Top negative,horrible,-10.3898
+weights,Top negative,disappointing,-10.1349
+weights,Top negative,forgettable,-10.1268
+weights,Top negative,terrible,-10.0169
+weights,Top negative,worse,-9.9627
+weights,Top negative,fails,-9.4671
+weights,Top negative,poorly,-9.4652
+weights,Top negative,dull,-9.3076
+application,confidence >= 0.5,Coverage (tu dong xu ly),1.0
+application,confidence >= 0.5,Accuracy phan tu dong,0.9178
+application,confidence >= 0.5,So review chuyen cho nguoi,0.0
+application,confidence >= 0.5,Ti le loi duoc chuyen cho nguoi,0.0
+application,confidence >= 0.7,Coverage (tu dong xu ly),0.9287
+application,confidence >= 0.7,Accuracy phan tu dong,0.9447
+application,confidence >= 0.7,So review chuyen cho nguoi,530.0
+application,confidence >= 0.7,Ti le loi duoc chuyen cho nguoi,0.3748
+application,confidence >= 0.8,Coverage (tu dong xu ly),0.8806
+application,confidence >= 0.8,Accuracy phan tu dong,0.9566
+application,confidence >= 0.8,So review chuyen cho nguoi,888.0
+application,confidence >= 0.8,Ti le loi duoc chuyen cho nguoi,0.5352
+application,confidence >= 0.9,Coverage (tu dong xu ly),0.8013
+application,confidence >= 0.9,Accuracy phan tu dong,0.971
+application,confidence >= 0.9,So review chuyen cho nguoi,1478.0
+application,confidence >= 0.9,Ti le loi duoc chuyen cho nguoi,0.7169
+application,confidence >= 0.95,Coverage (tu dong xu ly),0.7206
+application,confidence >= 0.95,Accuracy phan tu dong,0.9808
+application,confidence >= 0.95,So review chuyen cho nguoi,2078.0
+application,confidence >= 0.95,Ti le loi duoc chuyen cho nguoi,0.8314
+application,confidence >= 0.99,Coverage (tu dong xu ly),0.5372
+application,confidence >= 0.99,Accuracy phan tu dong,0.992
+application,confidence >= 0.99,So review chuyen cho nguoi,3442.0
+application,confidence >= 0.99,Ti le loi duoc chuyen cho nguoi,0.9476
