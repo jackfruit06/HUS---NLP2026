@@ -1,0 +1,25 @@
+experiment,setting,metric,value
+exp3,TF-IDF + LR,Training time (s),0.1246
+exp3,TF-IDF + LR,Accuracy,0.8815
+exp3,TF-IDF + LR,F1,0.8837
+exp4,RNN + Embedding,Training time (s),22.6
+exp4,RNN + Embedding,Accuracy,0.5095
+exp4,RNN + Embedding,Precision,0.5117
+exp4,RNN + Embedding,Recall,0.4376
+exp4,RNN + Embedding,F1,0.4717
+exp4,LSTM + Embedding,Training time (s),23.9
+exp4,LSTM + Embedding,Accuracy,0.6535
+exp4,LSTM + Embedding,Precision,0.7348
+exp4,LSTM + Embedding,Recall,0.4815
+exp4,LSTM + Embedding,F1,0.5818
+exp4,GRU + Embedding,Training time (s),36.1
+exp4,GRU + Embedding,Accuracy,0.7145
+exp4,GRU + Embedding,Precision,0.6774
+exp4,GRU + Embedding,Recall,0.8202
+exp4,GRU + Embedding,F1,0.742
+exp5,max_length=50.0,Accuracy,0.6675
+exp5,max_length=50.0,F1,0.7035
+exp5,max_length=100.0,Accuracy,0.57
+exp5,max_length=100.0,F1,0.5873
+exp5,max_length=200.0,Accuracy,0.5105
+exp5,max_length=200.0,F1,0.6378
