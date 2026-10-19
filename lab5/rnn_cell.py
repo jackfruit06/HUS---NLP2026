@@ -342,14 +342,36 @@ try:
             self.classifier_dropout = nn.Dropout(dropout)
             self.fc = nn.Linear(hidden_size, num_classes)
 
+        
         def forward(self, x):
+            # Dem so token thuc cua moi sequence, khong tinh token PAD.
+            # Dataset dang padding o cuoi sequence (right padding).
+            lengths = x.ne(self.embedding.padding_idx).sum(dim=1)
+            lengths = lengths.clamp(min=1).cpu()
+
+            # Chuyen token IDs thanh embedding.
             emb = self.embed_dropout(self.embedding(x))
+
+            # Bo qua cac timestep padding khi chay recurrent layer.
+            packed_emb = nn.utils.rnn.pack_padded_sequence(
+                emb,
+                lengths,
+                batch_first=True,
+                enforce_sorted=False
+            )
+
+            # Lay hidden state tai token thuc cuoi cung.
             if self.rnn_type == "lstm":
-                _, (h_n, _) = self.rnn(emb)
+                _, (h_n, _) = self.rnn(packed_emb)
             else:
-                _, h_n = self.rnn(emb)
+                _, h_n = self.rnn(packed_emb)
+
             last_hidden = h_n[-1]
-            return self.fc(self.classifier_dropout(last_hidden))
+
+            # Phan loai sentiment.
+            logits = self.fc(self.classifier_dropout(last_hidden))
+            return logits
+
 
         def count_parameters(self):
             return sum(p.numel() for p in self.parameters() if p.requires_grad)

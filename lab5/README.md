@@ -50,9 +50,9 @@ Tiền xử lý: bỏ 418 duplicate, bỏ thẻ `<br />`, chia 70/15/15 (train/v
 | Model | Representation | Accuracy | F1 | Train time |
 |---|---|---:|---:|---:|
 | TF-IDF + Logistic Regression | Sparse | ~0.8815 | ~0.8837 | ~0,12s |
-| RNN + Embedding | Dense (dim=64) | ~0.5095 | ~0.4717 | ~22,6 min |
-| LSTM + Embedding | Dense (dim=64) | ~0.6535 | ~0.5818 | ~23,9 min |
-| GRU + Embedding | Dense (dim=64) | ~0.7145 | ~0.7420 | ~36,1 min |
+| RNN + Embedding | Dense (dim=64) | ~0.5095 | ~0.4717 | ~22,6 s |
+| LSTM + Embedding | Dense (dim=64) | ~0.6535 | ~0.5818 | ~23,9 s |
+| GRU + Embedding | Dense (dim=64) | ~0.7145 | ~0.7420 | ~36,1 s |
 
 
 ## Cách chạy
