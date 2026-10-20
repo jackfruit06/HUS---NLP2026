@@ -1,30 +1,14 @@
-# LAB 05 — Error Analysis (Mục 24)
-> **Sinh viên:** Nguyễn Thị Thanh Mai - 23000139  
-> **Khóa học:** HUS NLP 2026  
-> **Mô hình phân tích:** LSTM Classifier (`embed_dim=64`, `hidden_size=64`, `max_length=100`)  
-
----
-
-## 1. Tổng quan phương pháp đánh giá
-
-Mục tiêu của Error Analysis không chỉ dừng lại ở việc đếm số lượng dự đoán đúng/sai, mà là **mổ xẻ cơ chế hoạt động của mô hình chuỗi (sequence model)** để trả lời câu hỏi cốt lõi:
-> *Lỗi sai này xuất phát từ bản thân cơ chế sequence modeling (như vanishing gradient, thông tin bị nén, mất trật tự ngữ cảnh), hay do các yếu tố bên ngoài (như truncation cắt mất câu kết, từ hiếm OOV, châm biếm sarcasm, hoặc nhiễu nhãn trong tập dữ liệu)?*
-
-Dưới đây là 3 mẫu dự đoán đúng tiêu biểu (Correct) và 4 mẫu dự đoán sai tiêu biểu (Incorrect) được trích xuất trực tiếp từ tập kiểm thử `test_set` của mô hình LSTM.
-
----
-
-## 2. Bảng tổng hợp các mẫu phân tích
+## 1. Bảng tổng hợp các mẫu phân tích
 
 | Mã mẫu | Nhãn thực tế (True) | Dự đoán (Pred) | $P(\text{positive})$ | Phân loại nguyên nhân chính | Tác động của Sequence Modeling |
 |---|:---:|:---:|:---:|---|---|
-| **C1** | Negative | Negative | 0.1449 | Phủ định trực tiếp, giọng văn hoài nghi | ✅ Sequence model giữ được trạng thái tiêu cực |
-| **C2** | Negative | Negative | 0.2048 | Tranh luận phản bác, cấu trúc tu từ | ✅ Nhận biết được ngữ cảnh phản biện |
-| **C3** | Negative | Negative | 0.2653 | Từ khóa tiêu cực mạnh (*over-rated, over-hyped*) | ✅ Cấu trúc so sánh phủ định (*no Indiana Jones*) |
-| **E1** | **Positive** | **Negative** | **0.1204** | Truncation + Cấu trúc phủ định tu từ (*nothing to do, hurts*) | ⚠️ Truncation và sự xuất hiện dày đặc của từ tiêu cực bề mặt |
-| **E2** | **Positive** | **Negative** | **0.1558** | Từ ngữ mô tả cốt truyện tiêu cực (*hideous, plastic surgery*) | ⚠️ Nén thông tin cốt truyện lấn át thái độ khen ngợi |
-| **E3** | **Negative** | **Positive** | **0.5970** | Phim/Game mở đầu hào hứng (*excited, first ones*), thất vọng ở cuối | ❌ **Lỗi Truncation nặng**: Đoạn chê bai ở đuôi bị cắt đứt |
-| **E4** | **Negative** | **Positive** | **0.6441** | Từ vựng phức tạp, phê bình mang tính học thuật | ❌ Giới hạn từ vựng (Vocabulary) và cấu trúc câu phức |
+| C1 | Negative | Negative | 0.1449 | Phủ định trực tiếp, giọng văn hoài nghi | Sequence model giữ được trạng thái tiêu cực |
+| C2 | Negative | Negative | 0.2048 | Tranh luận phản bác, cấu trúc tu từ | Nhận biết được ngữ cảnh phản biện |
+| C3 | Negative | Negative | 0.2653 | Từ khóa tiêu cực mạnh | Cấu trúc so sánh phủ định  |
+| E1 | Positive | Negative | 0.1204 | Truncation + Cấu trúc phủ định tu từ  |  Truncation và sự xuất hiện dày đặc của từ tiêu cực bề mặt |
+| E2 | Positive | Negative | 0.1558 | Từ ngữ mô tả cốt truyện tiêu cực  |  Nén thông tin cốt truyện lấn át thái độ khen ngợi |
+| E3 | Negative | Positive | 0.5970 | Phim/Game mở đầu hào hứng (*excited, first ones*), thất vọng ở cuối | Lỗi Truncation nặng: Đoạn chê bai ở đuôi bị cắt đứt |
+| E4 | Negative | Positive | 0.6441 | Từ vựng phức tạp, phê bình mang tính học thuật |  Giới hạn từ vựng (Vocabulary) và cấu trúc câu phức |
 
 ---
 
@@ -36,7 +20,7 @@ Dưới đây là 3 mẫu dự đoán đúng tiêu biểu (Correct) và 4 mẫu 
 - **Trích đoạn Text:**  
   > *"To truly appreciate this film you had to be there (acting?) or have been a crew member. Yes, I am 'Selena', and at the ripe old age of 42, have serious doubts about what we were doing/did. It all started out to be like a 'John Waters' type thing, fri..."*
 - **Phân tích:**  
-  Review thể hiện sự hoài nghi sâu sắc (*"serious doubts"*, dấu chấm hỏi mang tính châm biếm *"acting?"*). Trạng thái ẩn của LSTM tích lũy dần các biểu hiện thất vọng từ đầu câu và duy trì giá trị âm ổn định về cuối, giúp mô hình tự tin gán nhãn Negative với xác suất Positive chỉ đạt $14.49\%$.
+  Review thể hiện sự hoài nghi sâu sắc ("serious doubts", dấu chấm hỏi mang tính châm biếm "acting?"). Trạng thái ẩn của LSTM tích lũy dần các biểu hiện thất vọng từ đầu câu và duy trì giá trị âm ổn định về cuối, giúp mô hình tự tin gán nhãn Negative với xác suất Positive chỉ đạt $14.49\%$.
 
 #### Mẫu C2 (True: Negative, Pred: Negative, $P = 0.2048$)
 - **Trích đoạn Text:**  
@@ -86,10 +70,3 @@ Dưới đây là 3 mẫu dự đoán đúng tiêu biểu (Correct) và 4 mẫu 
   2. Mô hình Recurrent ở mức phân loại nhị phân thô sơ không thể hiểu được cấu trúc câu phức hàm ẩn (subtle critique) nếu không được tiền huấn luyện trên các corpus ngôn ngữ lớn.
   3. **Kết luận:** Do **hạn chế về năng lực biểu diễn ngữ nghĩa bậc cao** của mạng nơ-ron hồi quy huấn luyện từ đầu (training from scratch).
 
----
-
-## 4. Tổng kết bài học rút ra
-
-1. **Không quy chụp mọi lỗi cho mô hình:** Cần phân định rõ lỗi do **tiền xử lý (truncation)**, lỗi do **từ vựng (OOV, rare slang)**, và lỗi do **cấu trúc ngữ nghĩa (sarcasm, subtle shift)**.
-2. **Nút thắt cổ chai của `max_length`:** Với các bài review có cấu trúc *"đầu khen/hào hứng, cuối chê bai"* hoặc ngược lại, việc cắt chuỗi cố định 100 tokens sẽ loại bỏ thông tin quyết định.
-3. **Sự cần thiết của cơ chế Attention:** Mô hình LSTM chỉ truyền trạng thái ẩn cuối cùng $h_T$ vào classifier khiến các chi tiết quan trọng ở giữa câu dễ bị lu mờ. Cơ chế Self-Attention sẽ cho phép bộ phân loại trực tiếp chú ý vào từ khóa then chốt bất kể vị trí của nó.

@@ -1,11 +1,5 @@
-# LAB 05 — Calculations & Theoretical Exercises
-> **Sinh viên:** Nguyễn Thị Thanh Mai - 23000139  
-> **Khóa học:** HUS NLP 2026  
-> **Môn học:** Xử lý Ngôn ngữ Tự nhiên  
-
----
-
-## 1. Bài 1 — Một bước Forward trong Simple RNN (Mục 6)
+## 6. Bài tập tính toán
+### Bài 1 — Một bước RNN
 
 ### Đề bài
 Cho vector đầu vào tại timestep $t$:
@@ -21,7 +15,6 @@ Yêu cầu tính:
 1. $a_t = W_{xh} x_t + W_{hh} h_{t-1} + b_h$
 2. $h_t = \tanh(a_t)$
 
----
 
 ### Các bước tính toán chi tiết
 
@@ -46,9 +39,9 @@ Sử dụng định nghĩa $\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$:
 ### Kết luận
 $$h_t \approx \begin{bmatrix} 0.5850 \\ 0.2913 \end{bmatrix}$$
 
----
 
-## 2. Bài 2 — Information Flow (Mục 7)
+
+## 7. Bài 2 — Information Flow
 
 ### Đề bài
 Cho sequence: `"I did not like this movie"`  
@@ -62,20 +55,19 @@ Giả sử model đọc từ trái sang phải: `"I"` $\to$ `"did"` $\to$ `"not"
 5. $t=5$ (`"this"`): $h_5 = \tanh(W_{xh} x_{\text{"this"}} + W_{hh} h_4 + b_h)$.
 6. $t=6$ (`"movie"`): $h_6 = \tanh(W_{xh} x_{\text{"movie"}} + W_{hh} h_5 + b_h)$ là trạng thái cuối đại diện toàn bộ câu.
 
-### Trả lời câu hỏi
-**Tại thời điểm model đọc `"like"`, thông tin `"not"` ảnh hưởng tới hidden state như thế nào?**
+
+Tại thời điểm model đọc `"like"`, thông tin `"not"` ảnh hưởng tới hidden state như thế nào?
 - Tại $t=4$, $h_4$ nhận đầu vào trực tiếp từ vector từ $x_{\text{"like"}}$ và trạng thái ẩn trước đó $h_3$ (đã mang thông tin của từ `"not"`).
-- Nhờ phép biến đổi phi tuyến và tích $W_{hh} h_3$, trọng số mạng có thể học cách chuyển hướng trạng thái biểu diễn từ sắc thái tích cực của từ `"like"` sang sắc thái tiêu cực phủ định (*not like* $\approx$ *dislike*).
+- Nhờ phép biến đổi phi tuyến và tích $W_{hh} h_3$, trọng số mạng có thể học cách chuyển hướng trạng thái biểu diễn từ sắc thái tích cực của từ `"like"` sang sắc thái tiêu cực phủ định.
 
 **So sánh với Average Word2Vec:**
 - Trong Average Word2Vec, vector của câu là:
   $$v_{\text{doc}} = \frac{1}{6} \left( v_{\text{"I"}} + v_{\text{"did"}} + v_{\text{"not"}} + v_{\text{"like"}} + v_{\text{"this"}} + v_{\text{"movie"}} \right)$$
 - Từ `"like"` mang vector hướng về cực Positive, từ `"not"` là một vector độc lập. Phep cộng trung bình làm triệt tiêu lẫn nhau hoặc làm loãng phạm vi tác động của `"not"`, khiến mô hình tuyến tính rất dễ nhầm lẫn câu phủ định thành tích cực vì có sự xuất hiện của từ `"like"`.
-- RNN vượt trội hơn vì có khả năng gán ghép ngữ cảnh (contextual composition) giữa từ đứng trước và từ đứng sau.
+- RNN vượt trội hơn vì có khả năng gán ghép ngữ cảnh giữa từ đứng trước và từ đứng sau.
 
----
 
-## 3. Bài 3 — Sequence Order (Mục 8)
+## 8. Bài 3 — Sequence Order 
 
 ### Đề bài
 Cho hai câu:
@@ -84,39 +76,21 @@ Cho hai câu:
 
 Giả sử cả hai câu có cùng tập từ vựng $\{ \text{"dog"}, \text{"bites"}, \text{"man"} \}$.
 
-### Trả lời câu hỏi
 
-#### 1. Average Word2Vec có thể phân biệt hai câu này dựa trên thứ tự hay không?
+1. Average Word2Vec có thể phân biệt hai câu này dựa trên thứ tự hay không?
 - **KHÔNG.** Phép toán của Average Word2Vec là phép cộng giao hoán:
   $$v(S_1) = \frac{1}{3} (v_{\text{dog}} + v_{\text{bites}} + v_{\text{man}}) = \frac{1}{3} (v_{\text{man}} + v_{\text{bites}} + v_{\text{dog}}) = v(S_2)$$
 - Vector đại diện của $S_1$ và $S_2$ hoàn toàn trùng nhau 100%. Do đó, bất kỳ bộ phân loại nào đặt phía sau Average Word2Vec đều đưa ra cùng một dự đoán xác suất cho cả hai câu.
 
-#### 2. RNN có khả năng phân biệt dựa trên thứ tự như thế nào?
+2. RNN có khả năng phân biệt dựa trên thứ tự như thế nào?
 - RNN xử lý theo hàm đệ quy không giao hoán:
   - Với $S_1$: $h_1 = f(x_{\text{dog}})$, $h_2 = f(x_{\text{bites}}, h_1)$, $h_3 = f(x_{\text{man}}, h_2)$.
   - Với $S_2$: $h'_1 = f(x_{\text{man}})$, $h'_2 = f(x_{\text{bites}}, h'_1)$, $h'_3 = f(x_{\text{dog}}, h'_2)$.
 - Vì $h_1 \neq h'_1$ nên $h_2 \neq h'_2$ và $h_3 \neq h'_3$.
 - Vector trạng thái cuối $h_3$ và $h'_3$ nằm ở hai vùng không gian khác nhau, giúp mạng phân biệt rõ ràng chủ ngữ thực hiện hành động (chó cắn người hay người cắn chó).
+ 
 
----
-
-## 4. Bài 4 — Vanishing Gradient trong RNN (Mục 9)
-
-Khi huấn luyện RNN qua thuật toán **Backpropagation Through Time (BPTT)**, gradient của hàm mất mát $L$ tại bước $T$ lan truyền ngược về timestep $t$ ($t \ll T$):
-$$\frac{\partial L}{\partial h_t} = \frac{\partial L}{\partial h_T} \frac{\partial h_T}{\partial h_t} = \frac{\partial L}{\partial h_T} \prod_{k=t+1}^T \frac{\partial h_k}{\partial h_{k-1}}$$
-
-Trong đó ma trận Jacobian giữa hai bước liên tiếp là:
-$$\frac{\partial h_k}{\partial h_{k-1}} = \text{diag}(1 - h_k^2) W_{hh}^T$$
-
-### Nguyên nhân khiến RNN khó học dependency ở xa khi chuỗi dài:
-1. Đạo hàm của hàm kích hoạt $\tanh(z)$ thỏa mãn: $0 < 1 - \tanh^2(z) \le 1$. Khi các nơ-ron rơi vào vùng bão hòa, $1 - h_k^2 \ll 1$.
-2. Nếu các giá trị riêng lớn nhất của $W_{hh}$ có độ lớn $< 1$, tích của chuỗi $T - t$ ma trận sẽ tiến về ma trận $0$ theo cấp số nhân:
-   $$\lim_{T - t \to \infty} \prod_{k=t+1}^T \frac{\partial h_k}{\partial h_{k-1}} = \mathbf{0}$$
-3. Khi gradient bằng 0, trọng số $W_{xh}$ và $W_{hh}$ không nhận được tín hiệu cập nhật từ những từ đứng ở đầu câu, dẫn đến việc Simple RNN bị "mất trí nhớ ngắn hạn" và chỉ ghi nhận được các từ ở vài bước cuối cùng.
-
----
-
-## 5. Bài 5 — Bài tập tính toán LSTM Gates (Mục 17)
+## 17. Bài tập tính toán LSTM Gates 
 
 ### Đề bài
 Cho một timestep cụ thể với các giá trị:
@@ -135,16 +109,6 @@ $$c_t = (0.9)(0.8) + (0.2)(0.5) = 0.72 + 0.10 = 0.82$$
 - **Khi $f_t \approx 1$:** Mô hình có xu hướng **bảo toàn nguyên vẹn** thông tin đã lưu trong cell state từ quá khứ ($c_t \approx c_{t-1}$). Về mặt giải tích, đạo hàm $\frac{\partial c_t}{\partial c_{t-1}} \approx 1$, cho phép gradient lan truyền ngược qua hàng chục hoặc hàng trăm timestep mà không bị suy giảm (giải quyết triệt để bài toán vanishing gradient).
 - **Khi $f_t \approx 0$:** Mô hình chủ động **xóa bỏ hoàn toàn** ký ức cũ. Điều này hữu ích khi chuyển sang một ngữ cảnh mới, một câu mới hoặc gặp dấu ngắt đoạn trong văn bản.
 
----
+ 
 
-## 6. So sánh 3 Kiến trúc Recurrent (Mục 18)
-
-| Đặc tính | Simple RNN | LSTM | GRU |
-|---|:---:|:---:|:---:|
-| **Cơ chế đệ quy (Recurrent)** | Có | Có | Có |
-| **Trạng thái ẩn (Hidden state $h_t$)** | Có | Có | Có |
-| **Cell state riêng biệt ($c_t$)** | Không | **Có** | Không |
-| **Số lượng cổng kiểm soát (Gates)** | 0 | **3** ($f, i, o$) | **2** ($r, z$) |
-| **Độ phức tạp kiến trúc** | Đơn giản nhất | Phức tạp nhất | Vừa phải |
-| **Số lượng tham số (Parameters)** | $O(d^2)$ | $4 \times O(d^2)$ | $3 \times O(d^2)$ |
-| **Xử lý phụ thuộc xa (Long dependency)** | Kém (dễ vanishing) | Rất tốt | Rất tốt |
+ 
