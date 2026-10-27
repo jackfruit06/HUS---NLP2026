@@ -31,7 +31,7 @@ lab06/
 ├── attention_numpy.py       <- Scaled Dot-Product Attention (NumPy) + numerical stability + verification
 ├── self_attention.ipynb     <- Experiment 1-5 + Application + Error Analysis + trả lời câu hỏi
 ├── results.csv              <- Kết quả định lượng của các experiments và models (test set)
-├── attention_heatmap.png    <- Attention matrix của 2 câu trong đề
+├── attention_heatmap.png    <- Attention matrix NumPy giả lập của 2 câu trong đề
 ├── confusion_matrix.png     <- Confusion matrix của 2 models (LSTM, Attention)
 ├── error_analysis.md        <- Phân tích 3 correct + 3 incorrect predictions của Attention
 └── reflection.md            <- Reflection: predictions, surprising results,
@@ -49,8 +49,8 @@ Sử dụng subset như LAB 05: 10,000 train, 2,000 validation, 2,000 test; voca
 
 | Model | Representation | Accuracy | F1 | Train time |
 |---|---|---:|---:|---:|
-| LSTM + Embedding | Final hidden state (dim=64) | 0.7105 | 0.7384 | ~13,56 s |
-| Self-Attention + Embedding | Context + masked mean pooling (dim=64) | 0.7775 | 0.7647 | ~13,88 s |
+| LSTM + Embedding | Final hidden state (dim=64) | 0.7105 | 0.7384 | ~17,35 s |
+| Self-Attention + Embedding | Context + masked mean pooling (dim=64) | 0.7775 | 0.7647 | ~17,07 s |
 
 Hai model được huấn luyện trên cùng dữ liệu với `epochs=5`, `batch_size=128`, `lr=0.002`, seed=42; đều chọn checkpoint epoch 3 theo validation loss. Thời gian đo trên CPU 4 threads, gồm training và validation. Phân tích kết quả và giới hạn được trình bày trong notebook, `error_analysis.md` và `reflection.md`.
 

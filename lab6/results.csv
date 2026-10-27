@@ -1,14 +1,4 @@
 experiment,setting,metric,value
-scaling,unscaled,Max weight,0.8668133321973347
-scaling,unscaled,Entropy (nat),0.44105744405816344
-scaling,scaled,Max weight,0.6652409557748218
-scaling,scaled,Entropy (nat),0.8323955818399389
-temperature,tau=0.5,Max weight,0.8668133321973349
-temperature,tau=0.5,Entropy (nat),0.44105744405816333
-temperature,tau=1.0,Max weight,0.6652409557748218
-temperature,tau=1.0,Entropy (nat),0.8323955818399389
-temperature,tau=2.0,Max weight,0.506480391055654
-temperature,tau=2.0,Entropy (nat),1.0201913367268314
 exp1,The,Attention,0.05419931069693087
 exp1,movie,Attention,0.05817052997717967
 exp1,was,Attention,0.05049920090421821
@@ -43,7 +33,7 @@ exp4,LSTM,Accuracy,0.7105
 exp4,LSTM,Precision,0.6740924092409241
 exp4,LSTM,Recall,0.8161838161838162
 exp4,LSTM,F1,0.7383642114776322
-exp4,LSTM,Training time (s),13.556995099999767
+exp4,LSTM,Training time (s),17.346522499999992
 exp4,LSTM,Parameters,2178306.0
 exp4,LSTM,Best epoch,3.0
 exp4,LSTM,Epochs,5.0
@@ -57,7 +47,7 @@ exp4,Attention,Accuracy,0.7775
 exp4,Attention,Precision,0.8123595505617978
 exp4,Attention,Recall,0.7222777222777222
 exp4,Attention,F1,0.7646747752511899
-exp4,Attention,Training time (s),13.881072099997255
+exp4,Attention,Training time (s),17.069567800001096
 exp4,Attention,Parameters,2157314.0
 exp4,Attention,Best epoch,3.0
 exp4,Attention,Epochs,5.0
@@ -69,16 +59,16 @@ exp4,Attention,Learning rate,0.002
 exp4,Attention,Seed,42.0
 exp5,T=10,Matrix elements,100.0
 exp5,T=10,Matrix float32 MiB,0.0003814697265625
-exp5,T=10,Median forward (ms),0.02939999831141904
+exp5,T=10,Median forward (ms),0.03169999945384916
 exp5,T=100,Matrix elements,10000.0
 exp5,T=100,Matrix float32 MiB,0.03814697265625
-exp5,T=100,Median forward (ms),0.06120000034570694
+exp5,T=100,Median forward (ms),0.06930000017746352
 exp5,T=500,Matrix elements,250000.0
 exp5,T=500,Matrix float32 MiB,0.95367431640625
-exp5,T=500,Median forward (ms),0.5369999998947605
+exp5,T=500,Median forward (ms),0.7671999992453493
 exp5,T=1000,Matrix elements,1000000.0
 exp5,T=1000,Matrix float32 MiB,3.814697265625
-exp5,T=1000,Median forward (ms),2.36869999935152
+exp5,T=1000,Median forward (ms),2.886899999793968
 exp5,T=10000,Matrix elements,100000000.0
 exp5,T=10000,Matrix float32 MiB,381.4697265625
 application,I like this movie.,P(positive),0.0011051902547478676

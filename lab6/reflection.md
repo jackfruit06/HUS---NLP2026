@@ -12,7 +12,7 @@
 | **Prediction 1:** Key có score lớn nhất nhận weight lớn nhất | Với scores [1,2,3], weights = [0.090031,0.244728,0.665241] | **Phù hợp.** Weight lớn nhất là 0.665241, chưa phải toàn bộ trọng số. Kết luận trong cùng một hàng, không mask key đó, temperature dương. |
 | **Prediction 2:** Scores [1,1,1,1] cho phân phối đều | Weights = [0.25,0.25,0.25,0.25] | **Phù hợp.** Query không ưu tiên key nào theo score đã cho; entropy = ln(4). |
 | **Prediction 3:** Scores [1,1,10] làm attention tập trung gần hết ở token thứ ba | Weights ≈ [0.00012338,0.00012338,0.99975324] | **Phù hợp.** Token thứ ba nhận khoảng 99.9753%, không bằng 100% về mặt toán học. |
-| **Prediction 4:** Tăng 10 → 1000 token làm ma trận self-attention tăng 10,000 lần | Số phần tử tăng 100 → 1,000,000; median forward CPU tăng khoảng 0.0294 → 2.3687 ms | **Đúng về số phần tử.** Runtime tăng khoảng 80.57 lần trong benchmark này, không phải 10,000 lần vì overhead và hiệu suất phép nhân ma trận. Một query cố định chỉ tăng số score 100 lần. |
+| **Prediction 4:** Tăng 10 → 1000 token làm ma trận self-attention tăng 10,000 lần | Số phần tử tăng 100 → 1,000,000; median forward CPU tăng khoảng 0.0317 → 2.8869 ms | **Đúng về số phần tử.** Runtime tăng khoảng 91.07 lần trong benchmark này, không phải 10,000 lần vì overhead và hiệu suất phép nhân ma trận. Một query cố định chỉ tăng số score 100 lần. |
 | **Prediction 5:** Attention không luôn trùng từ quan trọng theo con người | Mẫu E1 đặt weight cao ở `masterpiece` dù lời khen hướng tới bản phim khác; E2 nhấn `horrible` trong “not a lot of horrible…”; câu “I like this movie” nhấn `i` | **Phù hợp với các ví dụ quan sát được.** Heatmap chưa đủ chứng minh nguyên nhân lỗi; perturbation trong E1/E2 cung cấp thêm bằng chứng về độ nhạy của model. |
 
 Năm dự đoán đều phù hợp trong phạm vi đã nêu. Ba câu đầu dựa trên tính chất toán học nên đây là kiểm chứng phép tính; không coi chúng là bằng chứng tổng quát về chất lượng NLP. Không sửa lại dự đoán ban đầu để khớp output.
@@ -29,14 +29,14 @@ Khi đổi query sentiment sang topic và giữ K/V, token nhận weight lớn n
 
 | Model | Accuracy | Precision | Recall | F1 | Training time | Parameters |
 |---|---:|---:|---:|---:|---:|---:|
-| LSTM | 0.7105 | 0.6741 | 0.8162 | 0.7384 | 13.56 s | 2,178,306 |
-| Attention | 0.7775 | 0.8124 | 0.7223 | 0.7647 | 13.88 s | 2,157,314 |
+| LSTM | 0.7105 | 0.6741 | 0.8162 | 0.7384 | 17.35 s | 2,178,306 |
+| Attention | 0.7775 | 0.8124 | 0.7223 | 0.7647 | 17.07 s | 2,157,314 |
 
 **Attention tốt hơn về accuracy và F1 trong cấu hình này**, nhưng recall positive thấp hơn. Confusion matrix cho thấy Attention có 167 false positives, 278 false negatives; LSTM có 395 false positives, 184 false negatives. Vì vậy, câu “Attention tốt hơn mọi mặt” không đúng với kết quả.
 
 Không thể chỉ từ bảng này kết luận attention xử lý long-range dependency tốt hơn: cả hai model chỉ đọc 100 token đầu và chưa có đánh giá phụ thuộc dài được kiểm soát riêng. Lợi ích kiến trúc là đường tương tác trực tiếp giữa token; mức độ khai thác được cần thêm thí nghiệm.
 
-**Thời gian:** Attention 13.88 s so với LSTM 13.56 s, gần nhau ở CPU 4 threads với T=100. Tính song song về kiến trúc không đảm bảo nhanh hơn trong mọi kích thước batch/phần cứng. Không dùng thời gian này để dự đoán GPU hoặc sequence rất dài.
+**Thời gian:** Attention 17.07 s so với LSTM 17.35 s, gần nhau ở CPU 4 threads với T=100. Tính song song về kiến trúc không đảm bảo nhanh hơn trong mọi kích thước batch/phần cứng. Không dùng thời gian này để dự đoán GPU hoặc sequence rất dài.
 
 **Phạm vi so sánh LAB 05:** LSTM được huấn luyện lại, lấy state tại token thật cuối và chọn checkpoint theo validation loss. Do quy trình chọn checkpoint và môi trường khác, không quy chênh lệch với bảng LSTM cũ trong LAB 05 chỉ cho cơ chế attention.
 
@@ -62,11 +62,18 @@ Trong E1, thay `masterpiece` ở vị trí 56 bằng UNK làm P(positive) giảm
 
 ### 4.3. Attention pattern không tự là linguistic explanation
 
-- Query `cat` chú ý `cat` (0.5008), `sleeping` (0.1826), `the` (0.0959).
-- Query `adopted` chú ý `yesterday` (0.2968), `cat` (0.2201), `adopted` (0.1448).
-- Query `sleeping` chú ý `cat` (0.4258), `adopted` (0.1559), `sleeping` (0.1529).
+Với embedding giả lập và các ma trận chiếu đang dùng, top-3 keys là:
 
-Một số liên kết có vẻ phù hợp nghĩa câu. Tuy nhiên, ở câu về book, query `book` lại tập trung rất mạnh vào `was` (khoảng 0.86), không phải `expensive`. Model được train bằng nhãn sentiment, không phải nhãn dependency; không đủ bằng chứng để nói nó hiểu ngữ pháp từ hai hình này.
+| Query | Key thứ nhất | Key thứ hai | Key thứ ba |
+|---|---|---|---|
+| cat | adopted: 0.153717 | that: 0.149673 | sleeping: 0.144463 |
+| adopted | adopted: 0.223895 | that: 0.204026 | sleeping: 0.180127 |
+| sleeping | adopted: 0.201719 | that: 0.188644 | sleeping: 0.172775 |
+
+Các hàng có phân phối khác nhau vì mỗi token tạo query khác nhau; cùng một sequence không có một danh sách attention duy nhất cho mọi query.
+
+**Heatmap có chứng minh model hiểu ngữ pháp không?** Không. Đây là kết quả của vector ngẫu nhiên và phép nhân ma trận, không phải mô hình đã học từ dữ liệu ngôn ngữ. Nếu một liên kết tình cờ hợp nghĩa câu thì cũng chưa có bằng chứng hiểu ngữ pháp. Thay seed hoặc embedding có thể đổi pattern. Attention từ classifier đã huấn luyện được xem riêng ở Application và Error Analysis.
+
 
 ## 5. Overfitting và cách chọn checkpoint
 
