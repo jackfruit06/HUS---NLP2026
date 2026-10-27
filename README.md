@@ -6,7 +6,7 @@
 
 ---
 
-Tổng hợp các bài thực hành môn **Xử lý Ngôn ngữ Tự nhiên** (NLP) — HUS NLP 2026. Các lab đi từ xử lý và tìm kiếm văn bản, mô hình ngôn ngữ thống kê (N-gram), biểu diễn từ dạng vector (word embeddings), phân loại văn bản đến mô hình hóa chuỗi với RNN, LSTM và GRU.
+Tổng hợp các bài thực hành môn **Xử lý Ngôn ngữ Tự nhiên** (NLP) — HUS NLP 2026. Các lab đi từ xử lý và tìm kiếm văn bản, mô hình ngôn ngữ thống kê (N-gram), biểu diễn từ dạng vector (word embeddings), phân loại văn bản đến mô hình hóa chuỗi với RNN, LSTM, GRU và Attention.
 
 ## Danh sách bài thực hành
 
@@ -17,6 +17,7 @@ Tổng hợp các bài thực hành môn **Xử lý Ngôn ngữ Tự nhiên** (N
 | [lab3](lab3/) | Word Representations and Embeddings | Co-occurrence matrix, Word2Vec (Skip-gram), word similarity, word analogy, semantic search | [word_embedding.ipynb](https://colab.research.google.com/github/jackfruit06/HUS---NLP2026/blob/master/lab3/word_embedding.ipynb) |
 | [lab4](lab4/) | Text Classification | TF-IDF, Avg Word2Vec, Logistic Regression, Linear SVM, sentiment classification, confusion matrix, error analysis | [classification.ipynb](https://colab.research.google.com/github/jackfruit06/HUS---NLP2026/blob/master/lab4/classification.ipynb) |
 | [lab5](lab5/) | Sequence Models: RNN, LSTM and GRU | SimpleRNNCell (NumPy), sequence padding/truncation, sentiment classification, long-range dependency, error analysis | [sequence_classification.ipynb](https://colab.research.google.com/github/jackfruit06/HUS---NLP2026/blob/master/lab5/sequence_classification.ipynb) |
+| [lab06](lab06/) | Attention Mechanism | Q/K/V, scaled dot-product attention (NumPy), temperature, self-attention, context-aware sentiment, attention visualization | [self_attention.ipynb](lab06/self_attention.ipynb) |
 
 ## Cấu trúc kho lưu trữ
 
@@ -28,7 +29,8 @@ HUS---NLP2026/
 ├── lab2/   <- LAB 02 — Language Models
 ├── lab3/   <- LAB 03 — Word Representations and Embeddings
 ├── lab4/   <- LAB 04 — Text Classification
-└── lab5/   <- LAB 05 — Sequence Models: RNN, LSTM and GRU
+├── lab5/   <- LAB 05 — Sequence Models: RNN, LSTM and GRU
+└── lab06/  <- LAB 06 — Attention Mechanism
 ```
 
 Mỗi lab có `README.md` riêng mô tả cấu trúc thư mục, dữ liệu và cách chạy. Các phần chung của mỗi lab:
@@ -43,7 +45,7 @@ Mỗi lab có `README.md` riêng mô tả cấu trúc thư mục, dữ liệu v�
 ## Dữ liệu
 
 - `/dataset/30k_documents.json` — corpus 30,000 documents (JSON Lines: `text`, `timestamp`, `url`), dùng chung cho các lab liên quan.
-- `/dataset/IMDB Dataset.csv` — 50,000 review phim có nhãn sentiment, dùng trong Lab 4 và Lab 5 để phân loại cảm xúc.
+- `/dataset/IMDB Dataset.csv` — 50,000 review phim có nhãn sentiment, dùng trong Lab 4, Lab 5 và Lab 6 để phân loại cảm xúc.
 
 ## Môi trường
 
