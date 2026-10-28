@@ -26,14 +26,14 @@ Nếu GitHub không hiển thị được `self_attention.ipynb`, xem notebook (
 ```
 lab06/
 ├── README.md                <- file này
-├── calculations.md          <- tính tay: scores, softmax, context, scaling, self-attention
-├── prediction.md            <- 5 predictions trước khi chạy experiment
+├── calculations.pdf          <- tính tay: scores, softmax, context, scaling, self-attention
+├── prediction.pdf            <- 5 predictions trước khi chạy experiment
 ├── attention_numpy.py       <- Scaled Dot-Product Attention (NumPy) + numerical stability + verification
 ├── self_attention.ipynb     <- Experiment 1-5 + Application + Error Analysis + trả lời câu hỏi
 ├── results.csv              <- Kết quả định lượng của các experiments và models (test set)
 ├── attention_heatmap.png    <- Attention matrix NumPy giả lập của 2 câu trong đề
 ├── confusion_matrix.png     <- Confusion matrix của 2 models (LSTM, Attention)
-├── error_analysis.md        <- Phân tích 3 correct + 3 incorrect predictions của Attention
+├── error_analysis.pdf        <- Phân tích 3 correct + 3 incorrect predictions của Attention
 └── reflection.md            <- Reflection: predictions, surprising results,
                                 Attention→Transformer motivation
 ```
