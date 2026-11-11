@@ -32,7 +32,7 @@ HUS---NLP2026/
 ├── lab3/   <- LAB 03 — Word Representations and Embeddings
 ├── lab4/   <- LAB 04 — Text Classification
 ├── lab5/   <- LAB 05 — Sequence Models: RNN, LSTM and GRU
-├── lab06/  <- LAB 06 — Attention Mechanism
+├── lab6/  <- LAB 06 — Attention Mechanism
 ├── lab7/   <- LAB 07 — Transformer Architecture
 └── lab8/  <- LAB 08 — Pretrained Transformers and BERT Fine-Tuning
 ```
