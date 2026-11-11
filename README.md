@@ -19,6 +19,7 @@ Tổng hợp các bài thực hành môn **Xử lý Ngôn ngữ Tự nhiên** (N
 | [lab5](lab5/) | Sequence Models: RNN, LSTM and GRU | SimpleRNNCell (NumPy), sequence padding/truncation, sentiment classification, long-range dependency, error analysis | [sequence_classification.ipynb](https://colab.research.google.com/github/jackfruit06/HUS---NLP2026/blob/master/lab5/sequence_classification.ipynb) |
 | [lab06](lab06/) | Attention Mechanism | Q/K/V, scaled dot-product attention (NumPy), temperature, self-attention, context-aware sentiment, attention visualization | [self_attention.ipynb](lab06/self_attention.ipynb) |
 | [lab7](lab7/) | Transformer Architecture | Positional encoding, multi-head attention, FFN, residual, LayerNorm, pooling, IMDb classification | [transformer_classification.ipynb](lab7/transformer_classification.ipynb) |
+| [lab08](lab8/) | Pretrained Transformers and BERT Fine-Tuning | WordPiece, MLM, frozen encoder, fine-tuning, data efficiency, domain shift, confidence analysis | [tokenization.ipynb](lab8/tokenization.ipynb) · [fine_tuning.ipynb](lab8/fine_tuning.ipynb) |
 
 ## Cấu trúc kho lưu trữ
 
@@ -32,7 +33,8 @@ HUS---NLP2026/
 ├── lab4/   <- LAB 04 — Text Classification
 ├── lab5/   <- LAB 05 — Sequence Models: RNN, LSTM and GRU
 ├── lab06/  <- LAB 06 — Attention Mechanism
-└── lab7/   <- LAB 07 — Transformer Architecture
+├── lab7/   <- LAB 07 — Transformer Architecture
+└── lab8/  <- LAB 08 — Pretrained Transformers and BERT Fine-Tuning
 ```
 
 Mỗi lab có `README.md` riêng mô tả cấu trúc thư mục, dữ liệu và cách chạy. Các phần chung của mỗi lab:
@@ -47,7 +49,7 @@ Mỗi lab có `README.md` riêng mô tả cấu trúc thư mục, dữ liệu v�
 ## Dữ liệu
 
 - `/dataset/30k_documents.json` — corpus 30,000 documents (JSON Lines: `text`, `timestamp`, `url`), dùng chung cho các lab liên quan.
-- `/dataset/IMDB Dataset.csv` — 50,000 review phim có nhãn sentiment, dùng trong Lab 4, Lab 5, Lab 6 và Lab 7 để phân loại cảm xúc.
+- `/dataset/IMDB Dataset.csv` — 50,000 review phim có nhãn sentiment, dùng trong Lab 4–8 để phân loại cảm xúc.
 
 ## Môi trường
 
