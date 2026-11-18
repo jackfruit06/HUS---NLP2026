@@ -1,0 +1,11 @@
+# LAB 10 — Reflection
+
+LAB 08, LAB 09 và LAB 10 dùng pretrained Transformer nhưng khác đơn vị dự đoán. Backbone nhận token IDs và tạo vector theo ngữ cảnh ở từng vị trí. Các vector này là đầu vào cho prediction head; kiến trúc head và nhãn đích quyết định mô hình phải học tác vụ nào. Tái sử dụng encoder không có nghĩa ba bài toán có cùng output hoặc cùng cách đánh giá.
+
+Ở LAB 08, sentiment classification lấy representation tại [CLS] rồi đưa qua Linear để dự đoán một nhãn cho cả review. Loss so sánh logits lớp với positive hoặc negative. Trong LAB 09, head được áp dụng chung lên các token representations để tạo logits BIO. Mỗi vị trí được giám sát có một nhãn, còn entity chỉ đúng khi cả loại và ranh giới khớp gold. Vì tokenizer có thể tách một word thành nhiều mảnh, alignment và ignore index trở thành phần quan trọng của pipeline.
+
+LAB 10 nhận thêm question cùng context. Head Linear với hai đầu ra tại mỗi token tạo start logits và end logits. Hai cross-entropy được lấy trung bình; decoder tìm một cặp hợp lệ rồi dùng offset mapping lấy lại text trong context. Start và end token dùng chỉ số inclusive, trong khi slicing ký tự dùng end exclusive. Nhãn đích là hai vị trí, khác một sequence label hoặc một dãy nhãn BIO. Thay đổi prediction head vì thế kéo theo thay đổi chuẩn bị dữ liệu và post-processing.
+
+Trong thí nghiệm QA, baseline đạt F1 16.8053, Transformer T=256 đạt 27.5675 trên cùng 600 câu hỏi holdout. Đây là số đo của BERT-Tiny fine-tuned với 3.000 câu train, không đại diện mọi pretrained model. EM yêu cầu toàn answer khớp sau normalization; F1 cho điểm overlap nên có thể ghi nhận một phần đáp án dù boundary sai. Các bảng lỗi giúp phân biệt sai đầu, sai cuối và chọn nhầm vùng thông tin.
+
+Một backbone dùng được cho nhiều tác vụ vì contextual representation giữ thông tin phục vụ nhiều cách đọc khác nhau. Tuy nhiên, head khởi tạo mới vẫn cần dữ liệu và fine-tuning phù hợp. Context dài, window thiếu gold, distractor và câu hỏi không có đáp án vẫn là giới hạn. QA hiện tại nhận context trực tiếp và chỉ chọn span; retrieval ở LAB 11 mới tìm tài liệu, còn RAG thêm chuỗi xử lý dựa trên tài liệu được tìm. Chất lượng representation hữu ích phải được kiểm tra bằng target và metric của từng tác vụ.

@@ -20,6 +20,8 @@ Tổng hợp các bài thực hành môn **Xử lý Ngôn ngữ Tự nhiên** (N
 | [lab06](lab06/) | Attention Mechanism | Q/K/V, scaled dot-product attention (NumPy), temperature, self-attention, context-aware sentiment, attention visualization | [self_attention.ipynb](lab06/self_attention.ipynb) |
 | [lab7](lab7/) | Transformer Architecture | Positional encoding, multi-head attention, FFN, residual, LayerNorm, pooling, IMDb classification | [transformer_classification.ipynb](lab7/transformer_classification.ipynb) |
 | [lab08](lab8/) | Pretrained Transformers and BERT Fine-Tuning | WordPiece, MLM, frozen encoder, fine-tuning, data efficiency, domain shift, confidence analysis | [tokenization.ipynb](lab8/tokenization.ipynb) · [fine_tuning.ipynb](lab8/fine_tuning.ipynb) |
+| [lab9](lab9/) | Named Entity Recognition and Information Extraction | BIO, subword alignment, token classification, entity-level evaluation, structured extraction | [tokenizer_alignment.ipynb](lab9/tokenizer_alignment.ipynb) · [ner_finetuning.ipynb](lab9/ner_finetuning.ipynb) |
+| [lab10](lab10/) | Extractive Question Answering | Offset alignment, sliding windows, start/end prediction, EM/F1, Document QA | [tokenizer_alignment.ipynb](lab10/tokenizer_alignment.ipynb) · [qa_finetuning.ipynb](lab10/qa_finetuning.ipynb) |
 
 ## Cấu trúc kho lưu trữ
 
@@ -34,7 +36,9 @@ HUS---NLP2026/
 ├── lab5/   <- LAB 05 — Sequence Models: RNN, LSTM and GRU
 ├── lab6/  <- LAB 06 — Attention Mechanism
 ├── lab7/   <- LAB 07 — Transformer Architecture
-└── lab8/  <- LAB 08 — Pretrained Transformers and BERT Fine-Tuning
+├── lab8/  <- LAB 08 — Pretrained Transformers and BERT Fine-Tuning
+├── lab9/   <- LAB 09 — Named Entity Recognition and Information Extraction
+
 ```
 
 Mỗi lab có `README.md` riêng mô tả cấu trúc thư mục, dữ liệu và cách chạy. Các phần chung của mỗi lab:
